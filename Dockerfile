@@ -19,7 +19,7 @@ RUN apt-get install -y libsm6 libxext6 libxrender-dev
 
 # Install project packages
 RUN apt-get install -y tesseract-ocr
-RUN pip install numpy imutils pytesseract opencv-python
+RUN pip install numpy imutils pytesseract opencv-python scipy
 
 # Set to require no password when executing via sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers

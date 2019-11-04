@@ -2,6 +2,8 @@ import numpy as np
 import cv2
 import imutils
 import pytesseract
+import scipy.misc
+import time
 
 
 class LicensePlateReader:
@@ -75,10 +77,33 @@ class LicensePlateReader:
 			cv2.destroyAllWindows()
 			"""
 
-			return text.lower().replace("\n", "")
+			text = text.lower().replace("\n", "")
+
+			if text == "":
+				text = "No license found"
+
+			return text
 
 
 if __name__ == '__main__':
-	filename = "images/3.jpg"
-	text = LicensePlateReader.get_license_plate_text(filename)
-	print text
+	filename = "camera_screen.jpg"
+	camera_ip = "192.168.1.20"
+
+	cap = cv2.VideoCapture("rtsp://" + camera_ip + ":554/ucast/11")
+
+	while (cap.isOpened()):
+		try:
+			ret, frame = cap.read()
+			scipy.misc.imsave(filename, frame)
+			print LicensePlateReader.get_license_plate_text(filename)
+		except ValueError:
+			print "No license found"
+		time.sleep(1)
+
+	# ######################################
+	# #### Uncomment below for testing #####
+	# ######################################
+	"""
+	filename = "camera_screen.jpg"
+	print LicensePlateReader.get_license_plate_text(filename)
+	"""
