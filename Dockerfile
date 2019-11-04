@@ -24,17 +24,13 @@ RUN pip install numpy imutils pytesseract opencv-python scipy
 # Set to require no password when executing via sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-# Add a user called "user"
-RUN useradd -ms /bin/bash user \
-    && echo "user:user" | chpasswd && adduser user sudo \
-    && usermod -aG audio user
-
-# Set current user to "user"
-USER user
-
 # Copy project contents to home directory
-COPY . /home/user
+RUN mkdir /home/license
+COPY . /home/license
+
+RUN chmod +x /home/license/LicensePlateReader.py
 
 # Finish docker container
 STOPSIGNAL SIGTERM
-CMD /bin/bash
+ENTRYPOINT [ "python2.7" ]
+CMD [ "/home/license/LicensePlateReader.py" ]
