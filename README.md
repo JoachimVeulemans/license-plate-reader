@@ -2,5 +2,5 @@
 
 # Run code
 
-1. `docker build -t license-plate-reader .`
-2. `docker run -it license-plate-reader:latest`
+1. `./build_images.sh`
+2. `./start_container.sh`
