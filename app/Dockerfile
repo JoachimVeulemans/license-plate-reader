@@ -35,5 +35,3 @@ RUN chmod +rwx /home/license/
 
 # Finish docker container
 STOPSIGNAL SIGTERM
-ENTRYPOINT [ "python3" ]
-CMD [ "/home/license/LicensePlateReader.py" ]
