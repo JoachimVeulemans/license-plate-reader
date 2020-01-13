@@ -5,6 +5,7 @@ import pytesseract
 import time
 import imageio
 import re
+import sys
 
 
 class LicensePlateReader:
@@ -88,14 +89,18 @@ class LicensePlateReader:
 
 
 if __name__ == '__main__':
-	filename = "/home/license/images/camera_screen.jpg"
+	base_dir = ""
+	if len(sys.argv) == 2:
+		base_dir = sys.argv[1]
+
+	filename = base_dir + "images/camera_screen.jpg"
 	camera_ip = "192.168.1.20"
 
 	# ######################################
 	# #### Uncomment below for testing #####
 	# ######################################
 	"""
-	filename = "/home/license/images/image.jpg"
+	filename = base_dir + "images/image.jpg"
 	print(LicensePlateReader.get_license_plate_text(filename))
 	"""
 
