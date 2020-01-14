@@ -1,0 +1,20 @@
+version: '3'
+services:
+  license-plate-reader-frontend:
+    build: frontend
+    ports:
+    - "8080:80"
+  license-plate-reader-backend:
+    build: backend
+    ports:
+    - "4000:80"
+  message-logger-viewer-frontend:
+    image: joachimveulemans/message-logger-viewer:frontend-dev
+    ports:
+    - "4200:80"
+  message-logger-viewer-backend:
+    image: joachimveulemans/message-logger-viewer:backend
+    ports:
+    - "5000:80"
+volumes:
+  logvolume01: {}

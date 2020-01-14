@@ -128,3 +128,4 @@ dmypy.json
 
 *.jpg
 *.png
+node_modules/

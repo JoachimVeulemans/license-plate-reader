@@ -1,0 +1,50 @@
+<div class="container-fluid m-3">
+    <div class="row mb-2">
+    <h1>License Plate Reader</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <div class="row">
+                <h2>Upload</h2>
+            </div>
+            <div class="row">
+                <h3 class="mr-2">Upload via file:</h3>
+                <form enctype="multipart/form-data">
+                    <input class="form-control" #file type="file" (change)="handleFileInput($event.target.files)" id="file" name="file">
+                </form>
+            </div>
+        </div>
+        <div class="col-md-1 col-sm-12">
+            <div class="row">
+                <h2>Calculate</h2>
+            </div>
+            <div>
+                <button class="btn btn-primary" (click)="upload()" >Calculate</button>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="row">
+                <h2>License Plate</h2>
+            </div>
+            <div class="row">
+                <p>{{license}}</p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="row">
+                <h2>Original</h2>
+            </div>
+            <div class="row">
+                <img src="{{original_url}}"> 
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="row">
+                <h2>Plate</h2>
+            </div>
+            <div class="row">
+                <img src="{{plate_url}}"> 
+            </div>
+        </div>
+    </div>
+</div>

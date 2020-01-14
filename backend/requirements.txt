@@ -1,0 +1,9 @@
+numpy===1.18.1
+imutils===0.5.3
+pytesseract===0.3.1
+opencv-python===4.1.2.30
+imageio===2.6.1
+starlette===0.13.0
+uvicorn===0.11.1
+python-multipart===0.0.5
+aiofiles===0.4.0

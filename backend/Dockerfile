@@ -33,5 +33,4 @@ COPY . /home/license
 
 RUN chmod +rwx /home/license/
 
-# Finish docker container
-STOPSIGNAL SIGTERM
+CMD [ "python3", "/home/license/app.py" ]
