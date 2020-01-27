@@ -1,6 +1,6 @@
 numpy===1.18.1
 imutils===0.5.3
-pytesseract===0.3.1
+pytesseract===0.3.2
 opencv-python===4.1.2.30
 imageio===2.6.1
 starlette===0.13.0
