@@ -129,3 +129,10 @@ dmypy.json
 *.jpg
 *.png
 node_modules/
+yolo-training/darknet/
+
+yolo-training/OpenLabeling/
+
+yolo-training/test.txt
+
+yolo-training/train.txt
