@@ -7,7 +7,9 @@ services:
   license-plate-reader-backend:
     build: backend
     ports:
-    - "4000:80"
+    - "4000:443"
+  license-plate-reader-camera-stream:
+    build: continues-reader
   message-logger-viewer-frontend:
     image: joachimveulemans/message-logger-viewer:frontend-dev
     ports:
