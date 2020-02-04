@@ -1,0 +1,26 @@
+<annotation>
+  <folder>../../images</folder>
+  <filename>79291851_halle_belgium_may_20_collectors_meeting_of_classic_cars_and_muscle_cars_the_exhibition_took.jpg</filename>
+  <path>/mnt/c/Users/Joachim/Documents/repositories/license-plate-reader/yolo-training/images/79291851_halle_belgium_may_20_collectors_meeting_of_classic_cars_and_muscle_cars_the_exhibition_took.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>1300</width>
+    <height>975</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>licenseplate</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>769</xmin>
+      <ymin>715</ymin>
+      <xmax>825</xmax>
+      <ymax>757</ymax>
+    </bndbox>
+  </object>
+</annotation>

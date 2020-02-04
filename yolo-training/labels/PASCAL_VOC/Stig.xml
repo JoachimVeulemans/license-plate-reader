@@ -1,0 +1,26 @@
+<annotation>
+  <folder>../../images</folder>
+  <filename>Stig.jpg</filename>
+  <path>/mnt/c/Users/Joachim/Documents/repositories/license-plate-reader/yolo-training/images/Stig.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>442</width>
+    <height>332</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>licenseplate</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>173</xmin>
+      <ymin>143</ymin>
+      <xmax>243</xmax>
+      <ymax>160</ymax>
+    </bndbox>
+  </object>
+</annotation>

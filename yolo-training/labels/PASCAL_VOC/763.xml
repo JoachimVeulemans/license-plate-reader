@@ -1,0 +1,26 @@
+<annotation>
+  <folder>../../images</folder>
+  <filename>763.jpg</filename>
+  <path>/mnt/c/Users/Joachim/Documents/repositories/license-plate-reader/yolo-training/images/763.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>763</width>
+    <height>572</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>licenseplate</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>62</xmin>
+      <ymin>380</ymin>
+      <xmax>109</xmax>
+      <ymax>420</ymax>
+    </bndbox>
+  </object>
+</annotation>

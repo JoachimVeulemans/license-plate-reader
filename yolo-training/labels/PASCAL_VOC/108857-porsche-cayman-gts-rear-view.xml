@@ -1,0 +1,26 @@
+<annotation>
+  <folder>../../images</folder>
+  <filename>108857-porsche-cayman-gts-rear-view.jpg</filename>
+  <path>/mnt/c/Users/Joachim/Documents/repositories/license-plate-reader/yolo-training/images/108857-porsche-cayman-gts-rear-view.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>1200</width>
+    <height>800</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>licenseplate</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>535</xmin>
+      <ymin>466</ymin>
+      <xmax>689</xmax>
+      <ymax>496</ymax>
+    </bndbox>
+  </object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+  <folder>../../images</folder>
+  <filename>7-g63-amg-suv.jpg</filename>
+  <path>/mnt/c/Users/Joachim/Documents/repositories/license-plate-reader/yolo-training/images/7-g63-amg-suv.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>750</width>
+    <height>535</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>licenseplate</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>434</xmin>
+      <ymin>325</ymin>
+      <xmax>589</xmax>
+      <ymax>366</ymax>
+    </bndbox>
+  </object>
+</annotation>

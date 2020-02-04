@@ -1,0 +1,26 @@
+<annotation>
+  <folder>../../images</folder>
+  <filename>aston-martin-dbs-met-datum-kenteken_02.jpg</filename>
+  <path>/mnt/c/Users/Joachim/Documents/repositories/license-plate-reader/yolo-training/images/aston-martin-dbs-met-datum-kenteken_02.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>1275</width>
+    <height>956</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>licenseplate</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>591</xmin>
+      <ymin>416</ymin>
+      <xmax>733</xmax>
+      <ymax>456</ymax>
+    </bndbox>
+  </object>
+</annotation>

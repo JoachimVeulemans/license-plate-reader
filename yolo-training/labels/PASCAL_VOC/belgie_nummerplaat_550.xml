@@ -1,0 +1,26 @@
+<annotation>
+  <folder>../../images</folder>
+  <filename>belgie_nummerplaat_550.jpg</filename>
+  <path>/mnt/c/Users/Joachim/Documents/repositories/license-plate-reader/yolo-training/images/belgie_nummerplaat_550.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>550</width>
+    <height>335</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>licenseplate</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>150</xmin>
+      <ymin>145</ymin>
+      <xmax>202</xmax>
+      <ymax>162</ymax>
+    </bndbox>
+  </object>
+</annotation>
