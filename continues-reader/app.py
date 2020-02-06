@@ -5,20 +5,18 @@ import requests
 import time
 
 if __name__ == '__main__':
-	base_dir = ""
-	camera_ip = "192.168.1.20"
+	camera_ip = "192.168.1.200"
 	backend_url = "127.0.0.1:4000/upload"
+	pi_url = "192.168.1.7:8080/garage"
 
-	if (len(sys.argv) != 1 and len(sys.argv) != 3):
-		print("Wrong number of arguments given. First argument is base directory, second argument is ip address of camera.")
+	if (len(sys.argv) != 1 and len(sys.argv) != 2):
+		print("Wrong number of arguments given. First argument is ip address of camera.")
 		sys.exit(1)
 
-	if len(sys.argv) == 3:
-		base_dir = sys.argv[1]
-		camera_ip = sys.argv[2]
+	if len(sys.argv) == 2:
+		camera_ip = sys.argv[1]
 
-	filename = base_dir + "images/camera_screen.jpg"
-
+	filename = "camera_screen.jpg"
 	cap = cv2.VideoCapture("rtsp://" + camera_ip + ":554/ucast/11")
 
 	while cap.isOpened():
@@ -28,6 +26,11 @@ if __name__ == '__main__':
 			r = requests.post(url = backend_url, params = {'file': frame})
 			data = r.json() 
 			print(data)
-		except ValueError:
-			print("Camera feed error")
+			if data == "LICENSE":
+				r = requests.get(url = pi_url)
+				data = r.json() 
+				print(data)
+				time.sleep(10)
+		except ValueError as e:
+			print(e)
 		time.sleep(1)
