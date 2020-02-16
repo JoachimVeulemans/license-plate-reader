@@ -123,16 +123,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-
 .idea/
 
 *.jpg
 *.png
+*.txt
 node_modules/
-yolo-training/darknet/
 
-yolo-training/OpenLabeling/
-
-yolo-training/test.txt
-
-yolo-training/train.txt
