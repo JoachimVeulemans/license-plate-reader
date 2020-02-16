@@ -7,7 +7,7 @@ export const environment = {
     /** Setting whether production is active in this environment */
     production: false,
     /** Defines the URL for where API calls to the backend should point */
-    backend_url: 'http://localhost:4000'
+    backend_url: 'http://localhost:5000'
 };
 
 /*
