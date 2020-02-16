@@ -19,8 +19,8 @@ export class ApiService {
         return this.http.post<any>(url, uploadData);
     }
 
-    get_original_url(id: string): string {
-        return `${this._apiURL}/original?id=${id}`;
+    get_car_url(id: string): string {
+        return `${this._apiURL}/car?id=${id}`;
     }
 
     get_plate_url(id: string): string {

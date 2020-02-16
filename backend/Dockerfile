@@ -1,36 +1,32 @@
-# Define base image
-FROM ubuntu:18.04
+# 1 - Define base image
+FROM python:3.6
 
-# Set to UTF-8 otherwise would get weird errors
-ENV LANG C.UTF-8
+# 2 - Run apt update
+RUN apt-get update
 
-# Upgrade all existing packages
-RUN set -x \
-        && apt-get update \
-        && apt-get upgrade -y
+# 3 - Install some needed packages
+RUN apt-get install -y python3-dev gcc
 
-# Install video packages
-RUN apt-get install -y xserver-xorg-video-all libgl1-mesa-glx libgl1-mesa-dri
+# 4 - Copy the requirements.txt to Docker container
+COPY requirements.txt requirements.txt
 
-# Add some packages we need later on
-RUN apt-get install -y apt-transport-https ca-certificates git vim sudo htop curl wget mesa-utils python3-pip \
-    && apt-get install -y software-properties-common libnss3 dirmngr gnupg2 lsb-release tmux apt-utils
+# 5 - Install some needed packages for the project
+RUN pip install -r requirements.txt
 
-# Install some packages because of errors
-# https://github.com/NVIDIA/nvidia-docker/issues/864
-RUN apt-get install -y libsm6 libxext6 libxrender-dev
+# 6 - Copy whole project to Docker container
+COPY . /app
 
-# Install project packages
-RUN apt-get install -y tesseract-ocr
-COPY requirements.txt /home/license/requirements.txt
-RUN pip3 install -r /home/license/requirements.txt
+# 7 - Set environment to use port 443
+ENV PORT 443
 
-# Set to require no password when executing via sudo
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+# 8 - Expose port 443 to bind to later on
+EXPOSE 443
 
-# Copy project contents to home directory
-COPY . /home/license
+# 9 - Define the working directory
+WORKDIR /app
 
-RUN chmod +rwx /home/license/
+# 10 - Set entrypoint to Python
+ENTRYPOINT [ "python3.6" ]
 
-CMD [ "python3", "/home/license/app.py" ]
+# 11 - Launch app.py in command line
+CMD [ "app.py" ]

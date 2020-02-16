@@ -31,3 +31,7 @@ Here is assumed that you have [Python 3](https://www.python.org/downloads/) inst
 2. Install system dependencies by: `sudo apt install tesseract-ocr`.
 3. Install Python dependencies by: `pip3 install -r requirements.txt`.
 4. Run the project by: `python3 LicensePlateReader.py`.
+
+## License
+
+Some parts are forked from [sergiomsilva/alpr-unconstrained](https://github.com/sergiomsilva/alpr-unconstrained).

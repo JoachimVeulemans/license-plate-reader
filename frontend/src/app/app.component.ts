@@ -18,7 +18,7 @@ export class AppComponent {
     upload(): void {
         this.apiService.detect_license(this.selectedFile).subscribe((value) => {
             this.license = value.license;
-            this.original_url = this.apiService.get_original_url(value.id);
+            this.original_url = this.apiService.get_car_url(value.id);
             this.plate_url = this.apiService.get_plate_url(value.id);
             console.log(value);
         }, (error) => {
