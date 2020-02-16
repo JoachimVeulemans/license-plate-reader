@@ -13,14 +13,14 @@ COPY requirements.txt requirements.txt
 # 5 - Install some needed packages for the project
 RUN pip install -r requirements.txt
 
-# 6 - Copy whole project to Docker container
+# 6 - Expose port 443 to bind to later on
+EXPOSE 443
+
+# 7 - Copy whole project to Docker container
 COPY . /app
 
-# 7 - Set environment to use port 443
+# 8 - Set environment to use port 443
 ENV PORT 443
-
-# 8 - Expose port 443 to bind to later on
-EXPOSE 443
 
 # 9 - Define the working directory
 WORKDIR /app
@@ -29,4 +29,4 @@ WORKDIR /app
 ENTRYPOINT [ "python3.6" ]
 
 # 11 - Launch app.py in command line
-CMD [ "app.py" ]
+CMD [ "server.py" ]

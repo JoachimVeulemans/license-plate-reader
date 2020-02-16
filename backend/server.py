@@ -47,8 +47,6 @@ async def get_plate(request):
         return HTMLResponse("Error: parameter 'id' was not present.")
     except IOError:
         return HTMLResponse("Error: id: '" + id + "' was not found.")
-    except:
-        return HTMLResponse("Error: an unknown error occurred.")
 
 
 @app.route("/car", methods=["GET"])
@@ -62,8 +60,6 @@ async def get_car(request):
         return HTMLResponse("Error: parameter 'id' was not present.")
     except IOError:
         return HTMLResponse("Error: id: '" + id + "' was not found.")
-    except:
-        return HTMLResponse("Error: an unknown error occurred.")
 
 
 def predict_image_from_bytes(bytes):
