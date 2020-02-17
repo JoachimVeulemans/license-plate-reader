@@ -16,17 +16,21 @@ RUN pip install -r requirements.txt
 # 6 - Expose port 443 to bind to later on
 EXPOSE 443
 
-# 7 - Copy whole project to Docker container
+# 7 - Download weights
+RUN wget -c -N http://joachimveulemans.be/vehicle.weights -P models/
+RUN wget -c -N http://joachimveulemans.be/lp.weights -P models/
+
+# 8 - Copy whole project to Docker container
 COPY . /app
 
-# 8 - Set environment to use port 443
+# 9 - Set environment to use port 443
 ENV PORT 443
 
-# 9 - Define the working directory
+# 10 - Define the working directory
 WORKDIR /app
 
-# 10 - Set entrypoint to Python
+# 11 - Set entrypoint to Python
 ENTRYPOINT [ "python3.6" ]
 
-# 11 - Launch app.py in command line
+# 12 - Launch app.py in command line
 CMD [ "server.py" ]
