@@ -9,17 +9,17 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 })
 export class AppComponent {
     selectedFile: File;
-    license: string = "";
-    original_url: string = ""
-    plate_url: string = ""
+    license = '';
+    originalUrl = '';
+    plateUrl = '';
 
     constructor(private apiService: ApiService) { }
 
     upload(): void {
         this.apiService.detect_license(this.selectedFile).subscribe((value) => {
             this.license = value.license;
-            this.original_url = this.apiService.get_car_url(value.id);
-            this.plate_url = this.apiService.get_plate_url(value.id);
+            this.originalUrl = this.apiService.get_car_url(value.id);
+            this.plateUrl = this.apiService.get_plate_url(value.id);
             console.log(value);
         }, (error) => {
             console.log('====================================');
