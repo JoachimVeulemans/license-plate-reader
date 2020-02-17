@@ -1,0 +1,77 @@
+name: Angular-Frontend
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  Build-Ubuntu:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install
+      working-directory: ./frontend
+      run: npm install
+    - name: npm run build
+      working-directory: ./frontend
+      run: npm run build --prod
+
+  Build-Docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: docker build ./frontend/ --tag joachimveulemans-build-test:$(date +%s)
+
+  Linting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: npm install
+      working-directory: ./frontend
+      run: npm install
+    - name: npm run lint
+      working-directory: ./frontend
+      run: npm run lint
+
+  Karma-Testing:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: npm install
+      working-directory: ./frontend
+      run: npm install
+    - name: npm run test
+      working-directory: ./frontend
+      run: npm run test
+
+  Vulnerability-Audit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: npm install
+      working-directory: ./frontend
+      run: npm install
+    - name: npm audit
+      working-directory: ./frontend
+      run: npm audit
