@@ -16,9 +16,6 @@ RUN pip install -r requirements.txt
 # 6 - Expose port 443 to bind to later on
 EXPOSE 443
 
-# temp fix
-RUN wget -c -N http://joachimveulemans.be/vehicle.weights -P models/
-
 # 7 - Copy whole project to Docker container
 COPY . /app
 
