@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
     providedIn: 'root'
 })
 export class ApiService {
-    private API_URL = environment.backend_url;
+    public API_URL = environment.backend_url;
     private optionsWithJSON = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
     constructor(private http: HttpClient) { }
@@ -17,13 +17,5 @@ export class ApiService {
         const uploadData = new FormData();
         uploadData.append('file', image, 'file');
         return this.http.post<any>(url, uploadData);
-    }
-
-    get_car_url(id: string): string {
-        return `${this.API_URL}/car?id=${id}`;
-    }
-
-    get_plate_url(id: string): string {
-        return `${this.API_URL}/plate?id=${id}`;
     }
 }

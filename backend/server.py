@@ -9,6 +9,9 @@ from aiohttp import ClientSession
 from numpy import fromstring, uint8
 import cv2
 
+import datetime
+import time
+
 from object_detection import Detector
 
 origin = "localhost:4200"
@@ -36,11 +39,12 @@ async def upload(request):
     return predict_image_from_bytes(bytes)
 
 
-@app.route("/plate", methods=["GET"])
+@app.route("/lp", methods=["GET"])
 async def get_plate(request):
     try:
         id = request.query_params["id"]
-        filename = "tmp/" + id + "-lp.png"
+        i = request.query_params["i"]
+        filename = "tmp/" + id + "-lp-" + i + ".png"
         open(filename)
         return FileResponse(filename)
     except KeyError:
@@ -48,9 +52,8 @@ async def get_plate(request):
     except IOError:
         return HTMLResponse("Error: id: '" + id + "' was not found.")
 
-
-@app.route("/car", methods=["GET"])
-async def get_car(request):
+@app.route("/orig", methods=["GET"])
+async def get_orig(request):
     try:
         id = request.query_params["id"]
         filename = "tmp/" + id + "-car.png"
@@ -61,13 +64,30 @@ async def get_car(request):
     except IOError:
         return HTMLResponse("Error: id: '" + id + "' was not found.")
 
+@app.route("/car", methods=["GET"])
+async def get_car(request):
+    try:
+        id = request.query_params["id"]
+        i = request.query_params["i"]
+        filename = "tmp/" + id + "-car-" + i + ".png"
+        open(filename)
+        return FileResponse(filename)
+    except KeyError:
+        return HTMLResponse("Error: parameter 'id' or 'i' was not present.")
+    except IOError:
+        return HTMLResponse("Error: id: '" + id + "' was not found.")
+
 
 def predict_image_from_bytes(bytes):
     img = cv2.imdecode(fromstring(bytes, uint8), cv2.IMREAD_UNCHANGED)
     filename = str(uuid4())
 
+    start = time.time()
     lp = detector.detect_debug(img, filename)
-    return JSONResponse({"id": filename, "license": lp})
+    end = time.time()
+    print("Inference took {:.6f} seconds".format(end - start) + " " + str(datetime.datetime.now()))
+
+    return JSONResponse({"id": filename, "licenses": lp})
 
     
 async def get_bytes(url):
