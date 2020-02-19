@@ -24,18 +24,17 @@ class LP:
 
         blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (240, 80), swapRB=False, crop=False)
         self.net.setInput(blob)
-        start = time.time()
+        
         layer_outputs = self.net.forward(ln)
-        end = time.time()
-
-        print("YOLO took {:.6f} seconds".format(end - start) + " " + str(datetime.datetime.now()))
         idxs, boxes, confidences, class_ids = self.get_data(layer_outputs, self.args, W, H, image, image_name)
 
         res = []
         if len(idxs) > 0:
             for i in idxs.flatten():
                 (x, y) = (boxes[i][0], boxes[i][1])
+                start = time.time()
                 (w, h) = (boxes[i][2], boxes[i][3])
+                start = time.time()
                 res.append((self.LABELS[class_ids[i]], confidences[i], (x, y, w, h)))
 
         return res, idxs, boxes, confidences, class_ids
