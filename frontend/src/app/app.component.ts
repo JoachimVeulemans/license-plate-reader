@@ -9,18 +9,22 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 })
 export class AppComponent {
     selectedFile: File;
-    license = '';
-    originalUrl = '';
-    plateUrl = '';
+    licenses = [];
+    id: string;
+    url: string;
+    busy = false;
 
-    constructor(private apiService: ApiService) { }
+    constructor(private apiService: ApiService) {
+        this.url = apiService.API_URL;
+    }
 
     upload(): void {
+        this.busy = true;
         this.apiService.detect_license(this.selectedFile).subscribe((value) => {
-            this.license = value.license;
-            this.originalUrl = this.apiService.get_car_url(value.id);
-            this.plateUrl = this.apiService.get_plate_url(value.id);
+            this.licenses = value.licenses;
+            this.id = value.id;
             console.log(value);
+            this.busy = false;
         }, (error) => {
             console.log('====================================');
             console.log(error.message);

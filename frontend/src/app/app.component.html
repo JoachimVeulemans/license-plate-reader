@@ -19,32 +19,29 @@
                 <h2>Calculate</h2>
             </div>
             <div>
-                <button class="btn btn-primary" (click)="upload()" >Calculate</button>
+                <button [disabled]="busy" class="btn btn-primary" (click)="upload()" >Calculate</button>
             </div>
         </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="row">
-                <h2>License Plate</h2>
-            </div>
-            <div class="row">
-                <p>{{license}}</p>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
+        <div class="col-md-3 col-sm-12">
             <div class="row">
                 <h2>Original</h2>
             </div>
             <div class="row">
-                <img [src]="originalUrl"> 
+                <img src="{{url}}/orig?id={{id}}"> 
             </div>
         </div>
-        <div class="col-md-4 col-sm-12">
+        <div class="row">
+        <div class="col-md-3 col-sm-12" *ngFor="let license of licenses; let i = index">
             <div class="row">
-                <h2>Plate</h2>
+                <h2>Car: {{license}}</h2>
             </div>
             <div class="row">
-                <img [src]="plateUrl"> 
+                <img src="{{url}}/car?id={{id}}&i={{i}}">
             </div>
+            <div class="row">
+                <img src="{{url}}/lp?id={{id}}&i={{i}}">
+            </div>
+        </div>
         </div>
     </div>
 </div>
