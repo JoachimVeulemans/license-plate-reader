@@ -6,6 +6,8 @@ from src.label import Label, lwrite
 from src.keras_utils import load_model, detect_lp
 from src.utils import im2single, nms
 from src.label import dknet_label_conversion, Shape
+import time
+import datetime
 
 class Detector:
     def __init__(self):
@@ -43,7 +45,10 @@ class Detector:
     
 
     def detect_debug(self, img, filename):
+        start = time.time()
         labels = self.detect_vehicle(img, filename)
+        end = time.time()
+        print("Vehicle detection took {:.6f} seconds".format(end - start) + " " + str(datetime.datetime.now()))
         licenses = []
 
         for i, car in enumerate(labels):
@@ -53,7 +58,10 @@ class Detector:
             h = int(car[3] * img.shape[0])
             cropped = img[cy:cy + h, cx:cx + w]
             cv2.imwrite('%s/%s-car-%s.png' % (self.output_dir, filename, str(i)), cropped)
+            start = time.time()
             licenses.append(self.detect_lp(cropped, filename, i))
+            end = time.time()
+            print("LP detection took {:.6f} seconds".format(end - start) + " " + str(datetime.datetime.now()))
 
         return licenses
 

@@ -13,7 +13,6 @@ class Vehicle:
         self.weights_path = os.path.sep.join([self.args["yolo"], "vehicle.weights"])
         self.config_path = os.path.sep.join([self.args["yolo"], "vehicle.cfg"])
         self.net = cv2.dnn.readNetFromDarknet(self.config_path, self.weights_path)
-        self.colors = np.random.randint(0, 255, size=(len(self.LABELS), 3), dtype="uint8")
         
     def detect_objects(self, img_cv, image_name):
         image = img_cv
@@ -37,10 +36,9 @@ class Vehicle:
                 (w, h) = (boxes[i][2], boxes[i][3])
                 
 
-                color = [int(c) for c in self.colors[class_ids[i]]]
-                cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
+                cv2.rectangle(image, (x, y), (x + w, y + h), 55, 2)
                 text = "{}: {:.4f}".format(self.LABELS[class_ids[i]], confidences[i])
-                cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+                cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 55, 2)
         
         return idxs, boxes, confidences, class_ids
 
