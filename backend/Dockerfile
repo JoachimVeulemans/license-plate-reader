@@ -4,8 +4,8 @@ FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # 2 - Run apt update
-RUN apt-get update
-RUN apt-get -y upgrade
+RUN apt-get update && \
+    apt-get -y upgrade
 
 # 3 - Install some needed packages
 RUN apt-get install -y python3.6 python3-pip gcc wget python-opencv
@@ -14,16 +14,16 @@ RUN apt-get install -y python3.6 python3-pip gcc wget python-opencv
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
-# 5 - Install tensorflow (no AVX - CPU)
-COPY tensorflow-1.14.1-cp36-cp36m-linux_x86_64.whl tensorflow-1.14.1-cp36-cp36m-linux_x86_64.whl
+# 5 - Install tensorflow - CPU
+RUN wget -c -N http://joachimveulemans.be/projects/tensorflow-1.14.1-cp36-cp36m-linux_x86_64.whl
 RUN pip3 install tensorflow-1.14.1-cp36-cp36m-linux_x86_64.whl
 
 # 6 - Expose port 443 to bind to later on
 EXPOSE 443
 
 # 7 - Download weights
-RUN wget -c -N http://joachimveulemans.be/vehicle.weights -P models/
-RUN wget -c -N http://joachimveulemans.be/lp.weights -P models/
+RUN wget -c -N http://joachimveulemans.be/projects/projects/vehicle.weights -P models/
+RUN wget -c -N http://joachimveulemans.be/projects/projects/lp.weights -P models/
 
 # 8 - Copy whole project to Docker container
 COPY . /app

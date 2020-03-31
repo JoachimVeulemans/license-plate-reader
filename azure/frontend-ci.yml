@@ -1,0 +1,52 @@
+# Angular - Frontend - CI
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '12.x'
+  displayName: 'Install Node.js'
+
+- script: npm install -g @angular/cli
+  workingDirectory: './frontend'
+  displayName: 'npm install @angular/cli'
+
+- script: npm install
+  workingDirectory: './frontend'
+  displayName: 'npm install dependencies'
+
+- script: npm run build --prod
+  workingDirectory: './frontend'
+  displayName: 'npm run build --prod'
+
+- script: npm run lint
+  workingDirectory: './frontend'
+  displayName: 'npm run lint'
+
+- script: npm run test
+  workingDirectory: './frontend'
+  displayName: 'npm run test'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TESTS-*.xml'
+
+- script: npm audit
+  workingDirectory: './frontend'
+  displayName: 'npm audit'
+  continueOnError: 'true'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHub'
+    repository: 'joachimveulemans/license-plate-reader'
+    command: 'build'
+    Dockerfile: 'frontend/Dockerfile'
+    buildContext: 'frontend'
+    tags: 'frontend'
