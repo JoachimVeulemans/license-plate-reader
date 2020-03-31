@@ -22,8 +22,8 @@ RUN pip3 install tensorflow-1.14.1-cp36-cp36m-linux_x86_64.whl
 EXPOSE 443
 
 # 7 - Download weights
-RUN wget -c -N http://joachimveulemans.be/projects/projects/vehicle.weights -P models/
-RUN wget -c -N http://joachimveulemans.be/projects/projects/lp.weights -P models/
+RUN wget -c -N http://joachimveulemans.be/projects/vehicle.weights -P models/
+RUN wget -c -N http://joachimveulemans.be/projects/lp.weights -P models/
 
 # 8 - Copy whole project to Docker container
 COPY . /app
