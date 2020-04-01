@@ -1,0 +1,39 @@
+# Python - Backend - CI
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.6'
+    addToPath: true
+    architecture: 'x64'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+    pip install tensorflow===1.14.0
+  workingDirectory: './backend'
+  displayName: 'Install dependencies'
+
+- script: pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html
+  workingDirectory: './backend'
+  displayName: 'Run testing with pytest'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/test-results.xml'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHub'
+    repository: 'joachimveulemans/license-plate-reader'
+    command: 'build'
+    Dockerfile: 'backend/Dockerfile'
+    buildContext: 'backend'
+    tags: 'backend'
