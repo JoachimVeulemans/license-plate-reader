@@ -1,21 +1,17 @@
 from os import environ
 from uuid import uuid4
-
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse, HTMLResponse, Response, FileResponse
 from starlette.middleware.cors import CORSMiddleware
 from uvicorn import run
 from aiohttp import ClientSession
 from numpy import fromstring, uint8
+from object_detection import Detector
 import cv2
-
 import datetime
 import time
 
-from object_detection import Detector
-
 origin = "localhost:4200"
-
 app = Starlette(debug=True)
 app.add_middleware(CORSMiddleware, allow_headers=["*"], allow_origins=[origin, "*"], allow_methods=['*'], allow_credentials=True)
 detector = Detector()
