@@ -1,5 +1,7 @@
-[![Docker Build Status](https://img.shields.io/docker/cloud/build/joachimveulemans/license-plate-reader)](https://hub.docker.com/r/joachimveulemans/license-plate-reader/builds)
-[![Docker Automated Status](https://img.shields.io/docker/cloud/automated/joachimveulemans/license-plate-reader)](https://hub.docker.com/r/joachimveulemans/license-plate-reader)
+[![Azure DevOps builds](https://img.shields.io/azure-devops/build/joachimveulemans/8dd4d72c-2427-4f6a-9893-630231aa5a18/29?label=CI%20Frontend)](https://dev.azure.com/JoachimVeulemans/license-plate-reader/_build?definitionId=29)
+[![Azure DevOps builds](https://img.shields.io/azure-devops/build/joachimveulemans/8dd4d72c-2427-4f6a-9893-630231aa5a18/28?label=CD%20Frontend)](https://dev.azure.com/JoachimVeulemans/license-plate-reader/_build?definitionId=28)
+[![Azure DevOps builds](https://img.shields.io/azure-devops/build/joachimveulemans/8dd4d72c-2427-4f6a-9893-630231aa5a18/27?label=CI%20Backend)](https://dev.azure.com/JoachimVeulemans/license-plate-reader/_build?definitionId=27)
+[![Azure DevOps builds](https://img.shields.io/azure-devops/build/joachimveulemans/8dd4d72c-2427-4f6a-9893-630231aa5a18/26?label=CD%20Backend)](https://dev.azure.com/JoachimVeulemans/license-plate-reader/_build?definitionId=26)
 
 # License Plate Reader
 
@@ -30,4 +32,4 @@ Here is assumed that you have [Python 3](https://www.python.org/downloads/) inst
 1. Go the the app directory by: `cd app`.
 2. Install system dependencies by: `sudo apt install tesseract-ocr`.
 3. Install Python dependencies by: `pip3 install -r requirements.txt`.
-4. Run the project by: `python3 LicensePlateReader.py`.
+4. Run the project by: `python3 server.py`.

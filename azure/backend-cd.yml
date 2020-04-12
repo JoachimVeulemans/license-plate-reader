@@ -9,8 +9,8 @@ pool:
 steps:
 - task: Docker@2
   inputs:
-    containerRegistry: 'DockerHub'
-    repository: 'joachimveulemans/license-plate-reader'
+    containerRegistry: 'DockerHubJoachim'
+    repository: 'license-plate-reader'
     command: 'buildAndPush'
     Dockerfile: 'backend/Dockerfile'
     buildContext: 'backend'
