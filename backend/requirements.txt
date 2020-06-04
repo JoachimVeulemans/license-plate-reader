@@ -1,4 +1,4 @@
-numpy===1.18.4
+numpy===1.18.5
 aiohttp===3.6.2
 aiofiles===0.5.0
 uvicorn===0.11.5
