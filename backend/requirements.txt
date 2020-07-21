@@ -2,7 +2,7 @@ numpy===1.18.5
 aiohttp===3.6.2
 aiofiles===0.5.0
 uvicorn===0.11.5
-starlette===0.13.4
+starlette===0.13.6
 python-multipart===0.0.5
 opencv-python===4.2.0.34
 keras===2.3.1
